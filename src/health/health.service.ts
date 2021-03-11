@@ -15,7 +15,8 @@ export class HealthService {
 
   checkReadiness(): Promise<HealthCheckResult> {
     return this.health.check([
-      (): Promise<HealthIndicatorResult> => this.db.pingCheck('database'),
+      (): Promise<HealthIndicatorResult> =>
+        this.db.pingCheck('database', { timeout: 30000 }),
     ]);
   }
 }

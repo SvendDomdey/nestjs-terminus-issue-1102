@@ -3,16 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthModule } from './health/health.module';
+import { Photo } from './photo/photo.entity';
 import { PhotoModule } from './photo/photo.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      host: 'localhost',
-      port: 27017,
-      database: 'photo',
-      entities: [],
+      url: `mongodb+srv://dbUser:doNotUseMe@cluster0.huuzy.mongodb.net/photo?retryWrites=true`,
+      entities: [Photo],
       synchronize: true,
       useUnifiedTopology: true,
       autoLoadEntities: true,
