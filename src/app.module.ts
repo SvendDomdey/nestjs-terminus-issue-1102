@@ -6,11 +6,15 @@ import { HealthModule } from './health/health.module';
 import { Photo } from './photo/photo.entity';
 import { PhotoModule } from './photo/photo.module';
 
+const user = 'dbUser';
+const pw = 'doNotUseMe';
+const host = 'cluster0.huuzy.mongodb.net';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: `mongodb+srv://dbUser:doNotUseMe@cluster0.huuzy.mongodb.net/photo?retryWrites=true`,
+      url: `mongodb+srv://${user}:${pw}@${host}/photo?retryWrites=true`,
       entities: [Photo],
       synchronize: true,
       useUnifiedTopology: true,
